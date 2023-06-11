@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import Ship from '~/modules/ship'
+import Ship from '~/factories/Ship'
 
 test('Ship should have the following properties : length, hitTrack and isSunk', () => {
   const ship = Ship(1)
