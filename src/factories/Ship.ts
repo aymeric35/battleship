@@ -1,15 +1,10 @@
 export default function Ship(shipLength: number) {
   const length = shipLength
   let hitTrack = 0
-  let sunk = false
 
-  const isSunk = () => {
-    if (length === hitTrack)
-      sunk = true
-    return sunk
-  }
+  const isSunk = () => length <= hitTrack
 
-  const hitOccurrences = () => {
+  const getHits = () => {
     return hitTrack
   }
 
@@ -17,5 +12,5 @@ export default function Ship(shipLength: number) {
     hitTrack++
   }
 
-  return { length, hitOccurrences, isSunk, hit }
+  return { length, getHits, isSunk, hit }
 }

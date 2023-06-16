@@ -3,7 +3,7 @@ import Ship from '~/factories/Ship'
 
 test('Ship should have the following properties : length, hitTrack and isSunk', () => {
   const ship = Ship(1)
-  expect(ship.hitOccurrences()).toEqual(0)
+  expect(ship.getHits()).toEqual(0)
   expect(ship.length).toEqual(1)
   expect(ship.isSunk()).toBeFalsy()
 })
@@ -14,9 +14,15 @@ test('Ship should be sunk', () => {
   expect(ship.isSunk()).toBeTruthy()
 })
 
-test('hitOccurrences should return the correct number of times the ship was hit', () => {
+test('Ship should not be sunk', () => {
+  const ship = Ship(2)
+  ship.hit()
+  expect(ship.isSunk()).toBeFalsy()
+})
+
+test('getHits should return the correct number of times the ship was hit', () => {
   const ship = Ship(3)
   ship.hit()
   ship.hit()
-  expect(ship.hitOccurrences()).toEqual(2)
+  expect(ship.getHits()).toEqual(2)
 })
