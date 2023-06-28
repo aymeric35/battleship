@@ -7,7 +7,7 @@ describe('randomAttack method', () => {
     const ai = AI()
     const gameboard = Gameboard()
     expect(() => {
-      while (ai.getCount() !== 20)
+      while (ai.getCount() !== 100)
         ai.randomAttack(gameboard)
       ai.randomAttack(gameboard)
     }).toThrowError('No more hits allowed')
