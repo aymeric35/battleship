@@ -1,0 +1,29 @@
+<script setup lang="ts">
+import Game from '~/factories/Game'
+
+const game = (Game())
+game.start()
+
+function evaluateAttack(x: number, y: number) {
+  if (game.getCurrentTurn().value === game.player1.getName()) {
+    game.Board2.receiveAttack(x, y)
+    game.nextTurn()
+    game.player2.randomAttack(game.Board1)
+    game.nextTurn()
+  }
+  else {
+    game.notYourTurn()
+  }
+}
+</script>
+
+<template>
+  <section>
+    <h2 class="mb-4">
+      Current turn : {{ game.getCurrentTurn() }}
+    </h2>
+    <TheBoard :gameboard="game.Board1" />
+    <div class="my-8 b-1 border-red" />
+    <TheBoard :gameboard="game.Board2" @attack="(x, y) => evaluateAttack(x, y)" />
+  </section>
+</template>
