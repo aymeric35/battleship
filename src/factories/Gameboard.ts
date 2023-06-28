@@ -37,9 +37,9 @@ export default function Gameboard() {
       throw new Error('You already hit that position')
   }
 
-  const areAllShipsSunk = (): boolean => {
+  const isGameOver = (): boolean => {
     return ships.every(ship => ship.isSunk())
   }
 
-  return { placeShip, receiveAttack, areAllShipsSunk, board, ships }
+  return { placeShip, receiveAttack, isGameOver, board, ships }
 }

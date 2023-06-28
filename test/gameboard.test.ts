@@ -103,7 +103,7 @@ describe('areAllShipsSunk method', () => {
     gameBoard.receiveAttack(0, 0)
     gameBoard.receiveAttack(0, 1)
     gameBoard.receiveAttack(0, 2)
-    expect(gameBoard.areAllShipsSunk()).toBeTruthy()
+    expect(gameBoard.isGameOver()).toBeTruthy()
   })
 
   test('2 - The method should be true', () => {
@@ -122,7 +122,7 @@ describe('areAllShipsSunk method', () => {
     gameBoard.receiveAttack(9, 9)
     gameBoard.receiveAttack(5, 0)
     gameBoard.receiveAttack(6, 5)
-    expect(gameBoard.areAllShipsSunk()).toBeTruthy()
+    expect(gameBoard.isGameOver()).toBeTruthy()
   })
 
   test('1 - The method should be false', () => {
@@ -130,7 +130,7 @@ describe('areAllShipsSunk method', () => {
     gameBoard.placeShip(Ship(3), 0, 0)
     gameBoard.receiveAttack(0, 0)
     gameBoard.receiveAttack(0, 1)
-    expect(gameBoard.areAllShipsSunk()).toBeFalsy()
+    expect(gameBoard.isGameOver()).toBeFalsy()
   })
 
   test('2 - The method should be false', () => {
@@ -147,6 +147,6 @@ describe('areAllShipsSunk method', () => {
     gameBoard.receiveAttack(7, 1)
     gameBoard.receiveAttack(9, 8)
     gameBoard.receiveAttack(9, 9)
-    expect(gameBoard.areAllShipsSunk()).toBeFalsy()
+    expect(gameBoard.isGameOver()).toBeFalsy()
   })
 })
