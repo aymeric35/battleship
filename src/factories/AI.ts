@@ -2,12 +2,12 @@ import Player from './Player'
 import type Gameboard from './Gameboard'
 
 export default function AI() {
-  const player = Player()
+  const player = Player('AI')
   const hits: number[][] = Array(10).fill(0).map(() => Array(10).fill(0))
   let count = 0
 
   const randomAttack = (gameboard: ReturnType<typeof Gameboard>) => {
-    if (count === 20)
+    if (count === 100)
       throw new Error('No more hits allowed')
 
     const randomX = () => Math.floor(Math.random() * 10)
@@ -28,5 +28,5 @@ export default function AI() {
 
   const getCount = () => count
 
-  return { defineName: player.defineName, getName: player.getName, randomAttack, getCount }
+  return { getName: player.getName, randomAttack, getCount }
 }

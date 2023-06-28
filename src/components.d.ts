@@ -13,8 +13,10 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Ship: typeof import('./components/ship.vue')['default']
+    TheBoard: typeof import('./components/TheBoard.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
+    TheGameboard: typeof import('./components/TheGameboard.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
   }
 }

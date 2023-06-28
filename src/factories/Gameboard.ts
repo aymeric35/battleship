@@ -1,3 +1,4 @@
+import { ref } from 'vue'
 import type Ship from '~/factories/Ship'
 
 enum hitType {
@@ -8,7 +9,7 @@ enum hitType {
 }
 
 export default function Gameboard() {
-  const board: number[][] = Array(10).fill(-1).map(() => Array(10).fill(-1))
+  const board = ref<number[][]>(Array(10).fill(-1).map(() => Array(10).fill(-1))).value
   const ships: ReturnType<typeof Ship>[] = []
 
   const placeShip = (ship: ReturnType<typeof Ship>, x: number, y: number): void => {
