@@ -3,28 +3,19 @@ import Gameboard from '~/factories/Gameboard'
 import Player from '~/factories/Player'
 import Ship from '~/factories/Ship'
 
-describe('defineName method', () => {
+describe('Name constraints', () => {
   test('A name with less than 10 characters should correctly be defined', () => {
-    const player = Player()
-    player.defineName('Toto')
+    const player = Player('Toto')
     expect(player.getName()).toEqual('Toto')
   })
 
   test('A name whose first letter is lowercase should be uppercased', () => {
-    const player = Player()
-    player.defineName('tata')
+    const player = Player('tata')
     expect(player.getName()).toEqual('Tata')
   })
 
   test('A name with more than 10 characters should throw an error', () => {
-    const player = Player()
-    expect(() => player.defineName('tatatatatatata')).toThrowError('Name cannot exceed 10 characters')
-  })
-
-  test('A name can only be defined once', () => {
-    const player = Player()
-    player.defineName('Gilbert')
-    expect(() => player.defineName('Roger')).toThrowError('Name has already been defined')
+    expect(() => Player('tatatatatatata')).toThrowError('Name cannot exceed 10 characters')
   })
 })
 
