@@ -1,4 +1,5 @@
 import { ref } from 'vue'
+import { toast } from 'vue3-toastify'
 import type Ship from '~/factories/Ship'
 
 enum hitType {
@@ -30,11 +31,14 @@ export default function Gameboard() {
     if (isShip) {
       ships[location].hit()
       board[x].splice(y, 1, hitType.HIT)
+      toast.success('Hit!')
     }
-    if (location === hitType.EMPTY)
+    if (location === hitType.EMPTY) {
       board[x].splice(y, 1, hitType.MISSED)
+      toast.info('Miss')
+    }
     if (location === hitType.ALREADYHIT)
-      throw new Error('You already hit that position')
+      toast.error('You already hit that position')
   }
 
   const isGameOver = (): boolean => {
