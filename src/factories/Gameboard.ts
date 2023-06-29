@@ -6,7 +6,6 @@ enum hitType {
   EMPTY = -1,
   HIT = -2,
   MISSED = -3,
-  ALREADYHIT = MISSED || HIT,
 }
 
 export default function Gameboard() {
@@ -37,7 +36,7 @@ export default function Gameboard() {
       board[x].splice(y, 1, hitType.MISSED)
       toast.info('Miss')
     }
-    if (location === hitType.ALREADYHIT)
+    if (location === hitType.HIT || location === hitType.MISSED)
       toast.error('You already hit that position')
   }
 
