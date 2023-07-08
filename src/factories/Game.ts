@@ -10,11 +10,13 @@ export default function Game() {
   const Board1 = Gameboard()
   const Board2 = Gameboard()
   const currentTurn = ref('')
-  const firstTurn = (Math.random() > 0.5) ? player1.getName() : player2.getName()
+  const firstTurn = player1.getName()
   const getCurrentTurn = () => currentTurn
   const setCurrentTurn = (player1: string) => currentTurn.value = player1
   const notYourTurn = () => alert('Not your turn')
-  const nextTurn = () => currentTurn.value === player1.getName() ? setCurrentTurn(player2.getName()) : setCurrentTurn(player1.getName())
+  const nextTurn = () => {
+    currentTurn.value === player1.getName() ? setCurrentTurn(player2.getName()) : setCurrentTurn(player1.getName())
+  }
 
   const start = () => {
     Board1.placeShip(Ship(4), 0, 0)
