@@ -1,19 +1,32 @@
 <script setup lang="ts">
 import Game from '~/factories/Game'
+import { hitType } from '~/enums'
 
 const game = (Game())
 game.start()
 
 function evaluateAttack(x: number, y: number) {
   if (game.getCurrentTurn().value === game.player1.getName()) {
-    game.Board2.receiveAttack(x, y)
+    const playerAttack = game.Board2.receiveAttack(x, y)
+    if (playerAttack === hitType.ALREADYHIT)
+      return
+    checkForGameOver()
     game.nextTurn()
+
     game.player2.randomAttack(game.Board1)
+    checkForGameOver()
     game.nextTurn()
   }
   else {
     game.notYourTurn()
   }
+}
+
+function checkForGameOver() {
+  if (game.Board2.isGameOver())
+    return alert(`${game.player1.getName()} won!`)
+  if (game.Board1.isGameOver())
+    return alert(`${game.player2.getName()} won!`)
 }
 </script>
 
