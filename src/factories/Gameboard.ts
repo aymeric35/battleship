@@ -25,6 +25,8 @@ export default function Gameboard() {
     if (isShip) {
       ships[location].hit()
       board[x].splice(y, 1, hitType.HIT)
+      if (ships[location].isSunk())
+        return hitType.HITANDSUNK
       return hitType.HIT
     }
     if (location === hitType.EMPTY) {
