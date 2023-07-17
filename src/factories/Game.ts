@@ -11,7 +11,7 @@ export default function Game() {
   const Board2 = Gameboard()
   const currentTurn = ref('')
   const firstTurn = player1.getName()
-  const getCurrentTurn = () => currentTurn
+  const getCurrentTurn = () => currentTurn.value
   const setCurrentTurn = (player1: string) => currentTurn.value = player1
   const notYourTurn = () => alert('Not your turn')
   const nextTurn = () => {
