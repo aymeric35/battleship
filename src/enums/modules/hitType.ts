@@ -3,5 +3,5 @@ export enum hitType {
   HIT = -2,
   MISSED = -3,
   ALREADYHIT = 'ALREADY HIT',
-  HITANDSUNK = 'HITANDSUNK',
+  HITANDSUNK = 'HIT AND SUNK',
 }
