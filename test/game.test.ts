@@ -5,9 +5,9 @@ describe('Game loop', () => {
   test('nextTurn should correctly updates the currentTurn assignation', () => {
     const game = Game()
     game.start()
-    const currentPlayer = game.getCurrentTurn().value
+    const currentPlayer = game.getCurrentTurn()
     game.nextTurn()
-    expect(game.getCurrentTurn().value).not.toEqual(currentPlayer)
+    expect(game.getCurrentTurn()).not.toEqual(currentPlayer)
   })
 
   test('Player and AI default names', () => {
