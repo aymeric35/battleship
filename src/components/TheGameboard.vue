@@ -6,7 +6,7 @@ const game = (Game())
 game.start()
 
 function evaluateAttack(x: number, y: number) {
-  if (game.getCurrentTurn().value === game.player1.getName()) {
+  if (game.getCurrentTurn() === game.player1.getName()) {
     const playerAttack = game.Board2.receiveAttack(x, y)
     if (playerAttack === hitType.ALREADYHIT)
       return
