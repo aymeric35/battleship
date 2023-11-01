@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { toast } from 'vue3-toastify'
 import Game from '~/factories/Game'
 import { hitType } from '~/enums'
 
-const game = (Game())
+const game = Game()
 game.start()
 
 function evaluateAttack(x: number, y: number) {
@@ -12,8 +13,7 @@ function evaluateAttack(x: number, y: number) {
       return
     checkForGameOver()
     game.nextTurn()
-
-    game.player2.randomAttack(game.Board1)
+    game.player2.aiAttack(game.Board1)
     checkForGameOver()
     game.nextTurn()
   }
@@ -24,9 +24,9 @@ function evaluateAttack(x: number, y: number) {
 
 function checkForGameOver() {
   if (game.Board2.isGameOver())
-    return alert(`${game.player1.getName()} won!`)
+    return toast.info(`${game.player1.getName()} won!`)
   if (game.Board1.isGameOver())
-    return alert(`${game.player2.getName()} won!`)
+    return toast.info(`${game.player2.getName()} won!`)
 }
 </script>
 

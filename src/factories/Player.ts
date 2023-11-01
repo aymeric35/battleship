@@ -6,9 +6,7 @@ export default function Player(name = 'Player') {
 
   name = name[0].toUpperCase() + name.slice(1)
 
-  const getName = (): string => {
-    return name
-  }
+  const getName = (): string => name
 
   const attack = (x: number, y: number, gameboard: ReturnType<typeof Gameboard>): void => {
     gameboard.receiveAttack(x, y)
